@@ -38,19 +38,20 @@ In your solution, focus on correctness. The performance of your solution will no
 <?php
 
 
-function solution($A, $k)
+function solution($A, $K)
 {
-    if (count($A) == 0 && $k == 0) {
-        return $A;
-    }
-    $temp = array();
-    for ($i = 0; $i < $k; $i++) {
-        $t = array_pop($A);
-        array_unshift($A, $t);
-    }
-    return $A;
+        $n = count($A);
+        $R = [];
+        if ($n != 0) {
+          $K %= $n;
+        }
+        for ($i = 0; $i < $n; $i++) {
+          $R[$i] = $A[$i - $K + ($i < $K ? $n : 0)];
+        }
+        return $R;
+      
 };
-print solution([1, 5, 6, 71, 5, 2, 5, 12, 2, 1, 55, 11, 0], 50);
+var_dump( solution([1, 5, 6, 71, 5, 2, 5, 12, 2, 1, 55, 11, 0], 50));
 
 
 ?>

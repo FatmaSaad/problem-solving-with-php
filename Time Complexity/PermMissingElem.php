@@ -22,21 +22,22 @@ N is an integer within the range [0..100,000];
 the elements of A are all distinct;
 each element of array A is an integer within the range [1..(N + 1)].
 
-
 <?php
-$n = count($A);
-if ($n == 0) {
-    return 1;
-}
-sort($A);
-if ($A[0] == 2) {
-    return 1;
-}
-for ($i = 1; $i < $n; $i++) {
-    if ($A[$i] - $A[$i - 1] > 1) {
-        return $A[$i] - 1;
+function solution($A){
+    $n = count($A);
+    if ($n == 0) {
+        return 1;
     }
+    sort($A);
+    if ($A[0] == 2) {
+        return 1;
+    }
+    for ($i = 1; $i < $n; $i++) {
+        if ($A[$i] - $A[$i - 1] > 1) {
+            return $A[$i] - 1;
+        }
+    }
+    return $A[$n - 1] + 1;
 }
-return $A[$n - 1] + 1;
-print(solution([8, 9, 7, 4]));
+print(solution([2,3,1,5]));
 ?>
